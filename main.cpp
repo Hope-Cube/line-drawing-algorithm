@@ -169,7 +169,7 @@ int main()
         }
     }
 
-    for(int y = screen.size(); y >= 0; y--){
+    for(int y = screen.size()-1; y >= 0; y--){
         for(int x = 0; x < screen[y].size(); x++){
             cout << screen[x][y] << screen[x][y];
         }
