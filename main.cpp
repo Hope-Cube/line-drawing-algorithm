@@ -52,6 +52,12 @@ class LineGroup{
         }
         return o;
         }
+        int Size(){
+        return lines.size();
+        }
+        vector<vector <Point>> Lines(){
+        return lines;
+        }
 };
 
 int Abs(int a)
@@ -136,19 +142,39 @@ int main()
     srand(time(0));
     setlocale(LC_ALL,"");
 
-    vector<vector<char>> screen(32, vector<char> (32,'0'));
+    vector<vector<char>> screen(16, vector<char> (16,' '));
 
-    Point p1 = Point(0,0);
-    Point p2 = Point(8,4);
+    Point p1 = Point(2,1);
+    Point p2 = Point(10,6);
 
     LineGroup lines = LineGroup();
     lines.Add(CreateLine(p1,p2));
 
-    //p1 = Point(5,9);
-    //p2 = Point(8,20);
+    p1 = Point(10,6);
+    p2 = Point(1,12);
 
-    //lines.Add(CreateLine(p1,p2));
+    lines.Add(CreateLine(p1,p2));
+
+    p1 = Point(1,1);
+    p2 = Point(2,12);
+
+    lines.Add(CreateLine(p1,p2));
+
     cout << lines.LinesOut();
+
+    for(int n = 0; n < lines.Size(); n++){
+        for(int i = 0; i < lines.Lines()[n].size(); i++){
+            Point p = lines.Lines()[n][i];
+            screen[p.X()][p.Y()] = '#';
+        }
+    }
+
+    for(int y = screen.size(); y >= 0; y--){
+        for(int x = 0; x < screen[y].size(); x++){
+            cout << screen[x][y] << screen[x][y];
+        }
+        cout << endl;
+    }
 
     cout << "\n";
     system("pause");
